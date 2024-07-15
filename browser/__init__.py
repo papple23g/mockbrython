@@ -30,9 +30,13 @@ class _mockbrython1(dict):
 
 """
 
+
+
+
+from typing import Callable
 class _mockbrython(dict):
     def __init__(self, *args, **kwargs):
-        self.style = self #_mockbrython1()
+        self.style = self  # _mockbrython1()
         self.args = args
         self.kwargs = kwargs
         for k, v in kwargs.items():
@@ -87,9 +91,13 @@ class _mockbrython(dict):
     def __hash__(self):
         return 0
 
+    def bind(self, event_str: str, func: Callable):
+        pass
+
 
 document = _mockbrython()
 doc = _mockbrython()
+
 
 def alert(*args, **kwargs):
     pass
@@ -109,8 +117,3 @@ def bind(target, evt):
 
 
 self = _mockbrython()
-
-
-
-
-
