@@ -33,7 +33,9 @@ class _mockbrython1(dict):
 
 
 
-from typing import Callable
+from _collections_abc import dict_values
+from typing import Any, Callable
+from .html import EV
 class _mockbrython(dict):
     def __init__(self, *args, **kwargs):
         self.style = self  # _mockbrython1()
@@ -91,7 +93,15 @@ class _mockbrython(dict):
     def __hash__(self):
         return 0
 
-    def bind(self, event_str: str, func: Callable):
+    def bind(self, event_str: str, func: Callable[[EV], Any]):
+        pass
+
+    @property
+    def value(self) -> Any:
+        pass
+
+    @property
+    def text(self) -> Any:
         pass
 
 
@@ -117,3 +127,12 @@ def bind(target, evt):
 
 
 self = _mockbrython()
+
+
+class DOMEvent:
+    def __init__(self, id):
+        self.currentTarget = _mockbrython(id=id)
+        self.target = _mockbrython(id=id)
+
+    def preventDefault(self):
+        pass
